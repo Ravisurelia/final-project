@@ -1,13 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import Welcome from "./welcome";
 
-ReactDOM.render(
-    <HelloWorld />,
-    document.querySelector('main')
-);
-
-function HelloWorld() {
-    return (
-        <div>Hello, World!</div>
-    );
+let elem;
+if (location.pathname === "/welcome") {
+    // runs if user is NOT logged in
+    elem = <Welcome />;
+} else {
+    // runs if the user IS logged in
+    elem = <img src="/mountain.jpg" />;
 }
+
+ReactDOM.render(elem, document.querySelector("main"));

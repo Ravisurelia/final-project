@@ -2,5 +2,109 @@
     margin: 0px;
     padding: 0px;
     text-decoration: none;
-    background-color: lightblue;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+}
+
+.welcome_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: chocolate 1px solid;
+    width: 100vw;
+    padding: 10px;
+}
+
+.main-logo {
+    width: 70px;
+    height: 80px;
+}
+
+.yatra-font {
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-left: 10px;
+}
+
+.slogan {
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.registration_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 15px;
+    background-color: rgb(248, 172, 72);
+    border-radius: 20px;
+    padding: 20px;
+    border: lightslategray 1px solid;
+}
+
+.registration-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#insert_details {
+    font-size: 25px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+input {
+    width: 250px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: lighter;
+
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+.submit_btn {
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 25px;
+    font-size: 25px;
+    font-weight: lighter;
+}
+.submit_btn:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.login_page {
+    margin-top: 20px;
+    font-size: 20px;
+
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.login_page1 {
+    text-decoration: none;
+}
+.login_page1:hover {
+    color: tomato;
 }
