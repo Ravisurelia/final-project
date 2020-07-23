@@ -98,7 +98,7 @@ export default class Registration extends React.Component {
                     </button>
                 </form>
                 <div className="login_page">
-                    If you have already register!
+                    If you're already registered!
                     <Link to="/login" className="login_page1">
                         Login Here!
                     </Link>

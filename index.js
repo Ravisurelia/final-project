@@ -126,6 +126,50 @@ app.post("/registration", (req, res) => {
     }
 });
 
+app.get("/login", (req, res) => {
+    if (!req.session.userId) {
+        res.redirect("/registration");
+    } else {
+        res.sendFile(__dirname + "/index.html");
+    }
+});
+
+app.post("/login", (req, res) => {
+    console.log("THIS IS MY REQ.BODY IN POST LOGIN: ", req.body);
+    console.log("THIS IS MY REQ.SESSION IN POST LOGIN: ", req.session.userId);
+    //here we are getting the password from the register page and matching it here to see if it is the same
+    gettingPassword(req.body.email)
+        .then((results) => {
+            console.log("my login results: ", results);
+            console.log("req.body.email in login : ", req.body.email);
+            console.log("this is my 0 pass: ", results.rows[0].password);
+            console.log("req.body.password in login: ", req.body.password);
+            compare(req.body.password, results.rows[0].password)
+                .then((match) => {
+                    if (match) {
+                        req.session.userId = results.rows[0].id;
+
+                        if (!results.rows[0]) {
+                            res.json();
+                        } else {
+                            res.json("Login Successful");
+                        }
+                    } else {
+                        console.log("it is not equal: ", match);
+                        res.json();
+                    }
+                })
+                .catch((err) => {
+                    console.log("my post login error: ", err);
+                    res.json();
+                });
+        })
+        .catch((err) => {
+            console.log("my post login error 2: ", err);
+            res.json();
+        });
+});
+
 app.get("*", function (req, res) {
     if (!req.session.userId) {
         res.redirect("/welcome");
