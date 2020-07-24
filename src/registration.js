@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
-/* import { Link } from "react-router-dom";*/
 
 export default class Registration extends React.Component {
     constructor(props) {
@@ -55,7 +54,7 @@ export default class Registration extends React.Component {
                 {this.state.error && (
                     <div className="error">ALL FIELDS ARE REQUIRED!!</div>
                 )}
-                <p id="insert_details">Sign up!</p>
+                <p id="insert_details">Register here</p>
                 <form method="POST" className="registration_form">
                     <input
                         type="text"

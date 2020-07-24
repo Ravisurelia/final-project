@@ -9,7 +9,7 @@
 html {
     height: 100%;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 #stars {
@@ -810,4 +810,11 @@ input {
 }
 .login_page1:hover {
     color: rgb(250, 109, 15);
+}
+
+.login-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

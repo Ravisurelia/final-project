@@ -21,3 +21,39 @@ exports.gettingPassword = (email) => {
     //password and id to email
     return db.query("SELECT password, id FROM users WHERE email = $1", [email]);
 };
+
+exports.insertingTravelDetails = (
+    nationality,
+    dep_date,
+    dep_time,
+    arr_date,
+    arr_time,
+    flight_name,
+    flight_number,
+    seat_number,
+    arr_place
+) => {
+    return db.query(
+        `INSERT INTO travelers (
+        nationality,
+        dep_date,
+        dep_time,
+        arr_date,
+        arr_time,
+        flight_name,
+        flight_number,
+        seat_number,
+        arr_place) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        [
+            nationality,
+            dep_date,
+            dep_time,
+            arr_date,
+            arr_time,
+            flight_name,
+            flight_number,
+            seat_number,
+            arr_place,
+        ]
+    );
+};

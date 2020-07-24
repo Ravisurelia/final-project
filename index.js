@@ -4,7 +4,11 @@ const compression = require("compression");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
 const { hash, compare } = require("./bc.js");
-const { insertingUserDetails, gettingPassword } = require("./db.js");
+const {
+    insertingUserDetails,
+    gettingPassword,
+    insertingTravelDetails,
+} = require("./db.js");
 
 //==============================middleware=====================================================================//
 
@@ -168,6 +172,35 @@ app.post("/login", (req, res) => {
             console.log("my post login error 2: ", err);
             res.json();
         });
+});
+
+app.post("/details", (req, res) => {
+    if (req.session.userId) {
+        insertingTravelDetails(
+            req.body.nationality,
+            req.body.dep_date,
+            req.body.dep_time,
+            req.body.arr_date,
+            req.body.arr_time,
+            req.body.flight_name,
+            req.body.flight_number,
+            req.body.seat_number,
+            req.body.arr_place
+        )
+            .then((results) => {
+                console.log("MY REQ:BODY IN POST REGISTRATION: ", req.body);
+                console.log("MY RESULTS IN POST REGISTRATION: ", results);
+                console.log("req.session: ", req.session);
+
+                res.json(results.rows[0]);
+            })
+            .catch((err) => {
+                console.log("MY POST REGISTRATION ERROR : ", err);
+                res.json();
+            });
+    } else {
+        res.json({ error: true });
+    }
 });
 
 app.get("*", function (req, res) {
