@@ -40,6 +40,7 @@ export default class Details extends React.Component {
 
         axios
             .post("/details", {
+                id: this.state.user_id,
                 nationality: this.state.nationality,
                 dep_date: this.state.dep_date,
                 dep_time: this.state.dep_time,
@@ -55,7 +56,7 @@ export default class Details extends React.Component {
                     "This is my results in post axios details: ",
                     results
                 );
-                location.replace("/");
+                location.replace("/flightdetails");
             })
             .catch((err) => {
                 console.log("my err in axios details: ", err);
@@ -74,85 +75,91 @@ export default class Details extends React.Component {
                 )}
                 <p id="insert_details">Please insert your details below:</p>
                 <form method="POST" className="registration_form">
-                    <p id="input-data">Nationality:</p>
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="nationality"
-                        placeholder="Nationality"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
+                    <div className="nationality">
+                        <p id="input-data">Nationality:</p>
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="nationality"
+                            placeholder="Nationality"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                    </div>
 
-                    <p id="input-data">Departure:</p>
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="dep_date"
-                        placeholder="Departure Date"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="dep_time"
-                        placeholder="Departure Time(i.e 23:15)"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
+                    <div className="dep_arr">
+                        <p id="input-data">Departure: Date & Time</p>
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="dep_date"
+                            placeholder="DD/MM/YYYY"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="dep_time"
+                            placeholder="Departure Time(i.e 23:15)"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
 
-                    <p id="input-data">Arrival:</p>
-                    <input
-                        type="password"
-                        className="userinput1"
-                        name="arr_date"
-                        placeholder="Arrival Date"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="arr_time"
-                        placeholder="Arrival Time(i.e 23:15"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
+                        <p id="input-data">Arrival: Date & Time</p>
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="arr_date"
+                            placeholder="DD/MM/YYYY"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="arr_time"
+                            placeholder="Arrival Time(i.e 23:15"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                    </div>
 
-                    <p id="input-data">Flight details:</p>
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="flight_name"
-                        placeholder="Flight Name"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <input
-                        type="text"
-                        className="userinput1"
-                        name="flight_number"
-                        placeholder="Flight Number"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <input
-                        type="password"
-                        className="userinput1"
-                        name="seat_number"
-                        placeholder="Seat Number"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
-                    <input
-                        type="password"
-                        className="userinput1"
-                        name="arr_place"
-                        placeholder="Arrival Place"
-                        value={this.state.value}
-                        onChange={(e) => this.handleChange(e)}
-                    />
+                    <div className="flight_details">
+                        <p id="input-data">Flight details:</p>
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="flight_name"
+                            placeholder="Flight Name"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="flight_number"
+                            placeholder="Flight Number"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="seat_number"
+                            placeholder="Seat Number"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                        <input
+                            type="text"
+                            className="userinput1"
+                            name="arr_place"
+                            placeholder="Arrival Place"
+                            value={this.state.value}
+                            onChange={(e) => this.handleChange(e)}
+                        />
+                    </div>
 
                     <button
                         className="submit_btn"
@@ -161,12 +168,6 @@ export default class Details extends React.Component {
                         Submit
                     </button>
                 </form>
-                {/*  <div className="login_page">
-                    If you're already registered!
-                    <Link to="/login" className="login_page1">
-                        Login Here!
-                    </Link>
-                </div> */}
             </div>
         );
     }

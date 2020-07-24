@@ -38,7 +38,7 @@ export default class Registration extends React.Component {
                     "This is my results in post axios registration: ",
                     results
                 );
-                location.replace("/");
+                location.replace("/details");
             })
             .catch((err) => {
                 console.log("my err in axios registration: ", err);

@@ -23,6 +23,7 @@ exports.gettingPassword = (email) => {
 };
 
 exports.insertingTravelDetails = (
+    user_id,
     nationality,
     dep_date,
     dep_time,
@@ -35,6 +36,7 @@ exports.insertingTravelDetails = (
 ) => {
     return db.query(
         `INSERT INTO travelers (
+            user_id,
         nationality,
         dep_date,
         dep_time,
@@ -43,8 +45,9 @@ exports.insertingTravelDetails = (
         flight_name,
         flight_number,
         seat_number,
-        arr_place) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+        arr_place) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
         [
+            user_id,
             nationality,
             dep_date,
             dep_time,
@@ -55,5 +58,15 @@ exports.insertingTravelDetails = (
             seat_number,
             arr_place,
         ]
+    );
+};
+
+exports.flightData = (id) => {
+    return db.query(
+        `
+    SELECT users.id, travelers.id AS  data_id, first, last, nationality, dep_date, dep_time, arr_date, arr_time, flight_name, flight_number, seat_number,arr_place, travelers.created_at
+    FROM users
+    JOIN travelers ON (user_id = users.id AND user_id = $1);`,
+        [id]
     );
 };

@@ -8,6 +8,7 @@ const {
     insertingUserDetails,
     gettingPassword,
     insertingTravelDetails,
+    flightData,
 } = require("./db.js");
 
 //==============================middleware=====================================================================//
@@ -177,6 +178,7 @@ app.post("/login", (req, res) => {
 app.post("/details", (req, res) => {
     if (req.session.userId) {
         insertingTravelDetails(
+            req.session.userId,
             req.body.nationality,
             req.body.dep_date,
             req.body.dep_time,
@@ -192,7 +194,11 @@ app.post("/details", (req, res) => {
                 console.log("MY RESULTS IN POST REGISTRATION: ", results);
                 console.log("req.session: ", req.session);
 
-                res.json(results.rows[0]);
+                if (results.rows[0].user_id) {
+                    res.json(results.rows[0]);
+                } else {
+                    res.redirect("/details");
+                }
             })
             .catch((err) => {
                 console.log("MY POST REGISTRATION ERROR : ", err);
@@ -200,6 +206,21 @@ app.post("/details", (req, res) => {
             });
     } else {
         res.json({ error: true });
+    }
+});
+
+app.get("/flightdata", (req, res) => {
+    if (req.session.userId) {
+        flightData(req.session.userId)
+            .then((results) => {
+                console.log("MY RESULTS IN GET FLIGHTDATA: ", results);
+                res.json(results.rows);
+            })
+            .catch((err) => {
+                console.log("MY GET FLIGHTDATA ERROR : ", err);
+            });
+    } else {
+        res.relocate("/login");
     }
 });
 
