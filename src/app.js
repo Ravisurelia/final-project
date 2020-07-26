@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Details from "./details";
 import Data from "./flightData";
 import axios from "./axios";
+import SearchPeople from "./searchpeople";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,14 +21,30 @@ export default class App extends React.Component {
         return (
             <div className="app_main">
                 <BrowserRouter>
-                    {/* <div className="navbar">
-                        <Link to="/">
-                            <img src="/yds-logo.png" className="tree_logo" />
+                    <div className="app-navbar">
+                        <Link to="/flightdetails" className="logo_name">
+                            <img src="/yds-logo.png" className="app_logo" />
                         </Link>
-                        <Link to="/" className="nav-name">
-                            <p>Hey, {this.state.firstname}</p>
+                        <Link to="/details" className="find">
+                            Form
                         </Link>
-                    </div> */}
+                        <Link to="/flightdetails" className="find">
+                            Your Data
+                        </Link>
+
+                        <Link to="/users" className="find">
+                            Search People
+                        </Link>
+                        <Link to="/list" className="find">
+                            List
+                        </Link>
+                        <Link to="/chat" className="find">
+                            Yatra-chat
+                        </Link>
+                        <a href="/logout" className="logout">
+                            Logout
+                        </a>
+                    </div>
                     <Route exact path="/details" component={Details} />
                     <Route
                         exact
@@ -49,6 +66,7 @@ export default class App extends React.Component {
                             />
                         )}
                     />
+                    <Route exact path="/users" component={SearchPeople} />
                 </BrowserRouter>
             </div>
         );

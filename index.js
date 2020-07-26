@@ -9,6 +9,7 @@ const {
     gettingPassword,
     insertingTravelDetails,
     flightData,
+    searchPeople,
 } = require("./db.js");
 
 //==============================middleware=====================================================================//
@@ -222,6 +223,23 @@ app.get("/flightdata", (req, res) => {
     } else {
         res.relocate("/login");
     }
+});
+
+app.get("/api/searchpeople", (req, res) => {
+    let val = req.query.searchName;
+    console.log("query is ", req.query.searchName);
+    searchPeople(val)
+        .then((results) => {
+            console.log(
+                "my result in index.js in get search people: ",
+                results
+            );
+            res.json(results.rows);
+            console.log("my results.rows: ", results.rows);
+        })
+        .catch((err) => {
+            console.log("This is my search people err: ", err);
+        });
 });
 
 app.get("*", function (req, res) {

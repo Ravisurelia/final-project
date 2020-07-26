@@ -17,12 +17,7 @@ export default class Details extends React.Component {
             seat_number: "",
             arr_place: "",
             error: false,
-            date: new Date(),
         };
-    }
-
-    onChangeDate(date) {
-        this.setState({ date });
     }
 
     handleChange(e) {

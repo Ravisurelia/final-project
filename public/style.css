@@ -827,3 +827,68 @@ input {
     padding: 50px;
     letter-spacing: 2px;
 }
+
+.app-navbar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: rgb(255, 123, 0) 2px solid;
+    color: white;
+    text-decoration: none;
+}
+
+.app_main {
+    text-decoration: none;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.app_logo {
+    width: 80px;
+    height: 90px;
+}
+
+.search-people {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 100vw;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+th,
+td {
+    text-align: center;
+    width: 200px;
+}
+th {
+    font-size: 16px;
+}
+
+td {
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+table,
+th,
+td {
+    border: 1px solid orangered;
+    border-collapse: collapse;
+    padding: 5px;
+}

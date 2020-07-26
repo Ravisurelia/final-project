@@ -70,3 +70,12 @@ exports.flightData = (id) => {
         [id]
     );
 };
+
+exports.searchPeople = (val) => {
+    return db.query(
+        `SELECT  first, last, nationality, dep_date, dep_time, arr_date, arr_time, flight_name, flight_number, seat_number,arr_place, travelers.created_at
+        FROM users, travelers
+        WHERE user_id = users.id AND first ILIKE $1 or last ILIKE $1 or flight_number ILike $1;`,
+        [val + "%"]
+    );
+};
