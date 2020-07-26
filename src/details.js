@@ -69,7 +69,7 @@ export default class Details extends React.Component {
                     <div className="error">ALL FIELDS ARE REQUIRED!!</div>
                 )}
                 <p id="insert_details">Please insert your details below:</p>
-                <form method="POST" className="registration_form">
+                <form method="POST" className="details_form">
                     <div className="nationality">
                         <p id="input-data">Nationality:</p>
                         <input
@@ -96,7 +96,7 @@ export default class Details extends React.Component {
                             type="text"
                             className="userinput1"
                             name="dep_time"
-                            placeholder="Departure Time(i.e 23:15)"
+                            placeholder="Dep-Time(i.e 23:15)"
                             value={this.state.value}
                             onChange={(e) => this.handleChange(e)}
                         />
@@ -114,7 +114,7 @@ export default class Details extends React.Component {
                             type="text"
                             className="userinput1"
                             name="arr_time"
-                            placeholder="Arrival Time(i.e 23:15"
+                            placeholder="Arr-Time(i.e 23:15)"
                             value={this.state.value}
                             onChange={(e) => this.handleChange(e)}
                         />
@@ -157,7 +157,7 @@ export default class Details extends React.Component {
                     </div>
 
                     <button
-                        className="submit_btn"
+                        className="upload_btn"
                         onClick={(e) => this.handleSubmit(e)}
                     >
                         Submit

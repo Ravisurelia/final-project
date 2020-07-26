@@ -40,7 +40,7 @@ export default function SearchPeople(props) {
 
     return (
         <div className="search-people">
-            <h3 className="search-people">Search People</h3>
+            <h4 className="search-people">Search People</h4>
             <input
                 type="text"
                 onChange={(e) => setSearchedName(e.target.value)}
@@ -49,15 +49,15 @@ export default function SearchPeople(props) {
             />
             <div>
                 {searchedName == "" && (
-                    <h3>Search with 'First' or 'Last' name</h3>
+                    <h5>Search with 'First' or 'Last' name</h5>
                 )}
             </div>
 
-            <div>
+            <div className="search-table">
                 <table>
                     {myUsers.map((each, key) => (
                         <Link to={`/flightdetails`} key={key} className="link">
-                            <tr>
+                            {/*  <tr>
                                 <th>First</th>
                                 <th>Last</th>
                                 <th>Nationality</th>
@@ -69,7 +69,7 @@ export default function SearchPeople(props) {
                                 <th>Fl-number</th>
                                 <th>Seat-No</th>
                                 <th>Arr-Place</th>
-                            </tr>
+                            </tr> */}
                             <tr>
                                 <td>{each.first}</td>
                                 <td>{each.last}</td>

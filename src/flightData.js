@@ -21,17 +21,20 @@ export default function Data() {
 
     return (
         <div className="flightdata-container">
-            <h2>Thank you for submitting your flight details!</h2>
+            <h2>Thank you for submitting your flight details! 🎉 </h2>
             {data.map((each, key) => (
                 <div className="data" key={key}>
-                    <h2>Your flight details</h2>
+                    <h3 className="thankyou">Your flight details</h3>
                     <div className="travelrs-name">
                         <p className="details">
                             Name: {each.first} {each.last}
                         </p>
-                        <p>Nationality: {each.nationality}</p>
+                        <p className="details">
+                            Nationality: {each.nationality}
+                        </p>
                     </div>
                     <div className="date-time">
+                        <h5 className="det">-----Dep & Arr-----</h5>
                         <p className="details">
                             Departure: On {each.dep_date}, at {each.dep_time}
                         </p>
@@ -40,6 +43,8 @@ export default function Data() {
                         </p>
                     </div>
                     <div className="flight">
+                        <h5 className="det">-----Flight details-----</h5>
+
                         <p className="details">
                             Flight Name: {each.flight_name}
                         </p>
