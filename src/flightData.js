@@ -6,6 +6,28 @@ import axios from "./axios";
 
 export default function Data() {
     const [data, setData] = useState([]);
+    const [deleteModal, setDeleteModal] = useState(false);
+
+    const modalOpen = () => {
+        setDeleteModal(true);
+    };
+
+    const modalClose = () => {
+        setDeleteModal(false);
+    };
+
+    const deleteAccount = (e) => {
+        e.preventDefault();
+        axios
+            .post("/deleteAccount")
+            .then((res) => {
+                console.log("this is my delete res: ", res.data);
+                location.replace("/");
+            })
+            .catch((err) => {
+                console.log("this is my delete err:", err);
+            });
+    };
 
     useEffect(() => {
         axios
@@ -60,6 +82,25 @@ export default function Data() {
                     </div>
                 </div>
             ))}
+            <button className="sendbtn1" onClick={modalOpen}>
+                Delete Profile
+            </button>
+            {deleteModal && (
+                <div className="deletemodal">
+                    <p className="delete-para">
+                        Are you sure you want to delete your profile
+                        Permanently? This will delete all your data.
+                    </p>
+                    <div className="del-modalbtn">
+                        <button className="sendbtn2" onClick={deleteAccount}>
+                            I agree
+                        </button>
+                        <button className="sendbtn3" onClick={modalClose}>
+                            cancel
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,56 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-/* import { Link } from "react-router-dom";
- */
-export default function SearchPeople(props) {
-    /*     const [latestUsers, setLatestUsers] = useState([]);*/
 
+export default function List(props) {
     const [myUsers, setMyUsers] = useState([]);
-    const [searchedName, setSearchedName] = useState("");
-
-    /* useEffect(() => {
-        if (searchedName == "") {
-            axios.get("/latestusers").then(({ data }) => {
-                console.log("data from getting last 3 profiles: ", data);
-                setLatestUsers(data.rows);
-            });
-        }
-    }, []); */
+    /* const [searchedName, setSearchedName] = useState(""); */
 
     useEffect(() => {
         let abort;
-        if (searchedName != "") {
-            (async () => {
-                const { data } = await axios.get(
-                    `/api/searchpeople?searchName=${searchedName}`
-                );
-                if (!abort) {
-                    setMyUsers(data);
-                    console.log("data from getting match profiles: ", data);
-                    console.log("search names: ", searchedName);
-                }
-            })();
-        } else {
-            setMyUsers([]);
-        }
+
+        (async () => {
+            const { data } = await axios.get("/list");
+            if (!abort) {
+                setMyUsers(data);
+                console.log("data for list of travelers: ", data);
+            }
+        })();
         return () => {
             abort = true;
         };
-    }, [searchedName]);
+    }, []);
 
     return (
         <div className="search-people">
-            <h4 className="search-people">Search People</h4>
-            <input
-                type="text"
-                onChange={(e) => setSearchedName(e.target.value)}
-                placeholder="Enter Name"
-                className="entername"
-            />
             <div>
-                {searchedName == "" && (
-                    <h5>Search with 'First' or 'Last' name</h5>
-                )}
+                <h3>List of people</h3>
             </div>
 
             <div className="search-table">

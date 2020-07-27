@@ -899,6 +899,8 @@ td {
 }
 th {
     font-size: 16px;
+    background-color: rgb(255, 113, 47);
+    color: whitesmoke;
 }
 
 td {
@@ -994,4 +996,129 @@ td {
 .upload_btn:hover {
     background-color: rgb(247, 101, 3);
     color: white;
+}
+
+.chat-title {
+    border: orangered 2px solid;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(250, 115, 36);
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -350px;
+}
+.chat-title1 {
+    border: black 2px solid;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+.img-message {
+    text-align: center;
+    padding: 10px;
+}
+
+.chat-container {
+    height: 300px;
+    width: 600px;
+    overflow-y: scroll;
+    justify-content: center;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+    border: black 2px solid;
+}
+
+.chat-text {
+    height: 50px;
+    width: 600px;
+    text-align: left;
+    font-family: sans-serif;
+    justify-content: center;
+    padding: 5px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    border: black 2px solid;
+}
+
+.chat-msg {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.one {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.sendbtn1 {
+    width: 200px;
+    height: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 40px;
+    font-size: 20px;
+    color: orangered;
+}
+
+.sendbtn1:hover {
+    background-color: red;
+    color: white;
+}
+
+.delete-para {
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+
+.sendbtn2,
+.sendbtn3 {
+    width: 200px;
+    height: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.sendbtn2:hover {
+    background-color: red;
+}
+.sendbtn3:hover {
+    background-color: lightblue;
+}
+
+.deletemodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.del-modalbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

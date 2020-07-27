@@ -5,6 +5,8 @@ import Details from "./details";
 import Data from "./flightData";
 import axios from "./axios";
 import SearchPeople from "./searchpeople";
+import List from "./list";
+import Chat from "./chat";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -35,7 +37,7 @@ export default class App extends React.Component {
                         <Link to="/users" className="link">
                             Search People
                         </Link>
-                        <Link to="/list" className="link">
+                        <Link to="/listoftravelers" className="link">
                             List
                         </Link>
                         <Link to="/chat" className="link">
@@ -67,6 +69,8 @@ export default class App extends React.Component {
                         )}
                     />
                     <Route exact path="/users" component={SearchPeople} />
+                    <Route exact path="/listoftravelers" component={List} />
+                    <Route path="/chat" component={Chat} />
                 </BrowserRouter>
             </div>
         );

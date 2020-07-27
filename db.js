@@ -79,3 +79,46 @@ exports.searchPeople = (val) => {
         [val + "%"]
     );
 };
+exports.listOfTravelers = () => {
+    return db.query(
+        `SELECT  first, last, nationality, dep_date, dep_time, arr_date, arr_time, flight_name, flight_number, seat_number,arr_place, travelers.created_at
+        FROM users, travelers
+        WHERE user_id = users.id;`
+    );
+};
+
+exports.getLastTenMessages = () => {
+    return db.query(
+        `
+        SELECT users.id, chats.id AS message_id, first, last, message,  chats.created_at
+        FROM chats
+        JOIN users ON (sender_id = users.id)
+        ORDER BY chats.created_at DESC
+        LIMIT  10`
+    );
+};
+
+exports.insertNewMessage = (id, message) => {
+    return db.query(
+        `
+    INSERT INTO chats (sender_id, message) VALUES($1, $2) RETURNING *
+    `,
+        [id, message]
+    );
+};
+
+exports.getMessageInformation = (id) => {
+    return db.query(
+        `
+        SELECT users.id, chats.id AS message_id, first, last, message,  chats.created_at
+        FROM chats
+        JOIN users ON (sender_id = users.id AND sender_id = $1)
+        ORDER BY chats.created_at DESC
+        LIMIT  10`,
+        [id]
+    );
+};
+
+exports.deleteAccount = (id) => {
+    return db.query(`DELETE FROM users, travelers WHERE (id = $1)`, [id]);
+};

@@ -10,7 +10,19 @@ const {
     insertingTravelDetails,
     flightData,
     searchPeople,
+    listOfTravelers,
+    getLastTenMessages,
+    insertNewMessage,
+    getMessageInformation,
+    deleteAccount,
 } = require("./db.js");
+
+//======socket boilerplate=================================//
+const server = require("http").Server(app);
+const io = require("socket.io")(server, {
+    origins: "localhost:8080",
+});
+//======socket boilerplate=================================//
 
 //==============================middleware=====================================================================//
 
@@ -19,15 +31,15 @@ app.use(express.static(__dirname + "/public"));
 
 //======cookie session middleware=================================//
 
-app.use(
+/* app.use(
     cookieSession({
         secret: `Ì am always angry.`,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         //to set the cookies-how long we want cookie to last
     })
-);
+); */
 
-/* const cookieSessionMiddleware = cookieSession({
+const cookieSessionMiddleware = cookieSession({
     secret: `I'm always angry.`,
     maxAge: 1000 * 60 * 60 * 24 * 90,
 });
@@ -35,7 +47,7 @@ app.use(
 app.use(cookieSessionMiddleware);
 io.use(function (socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
-}); */
+});
 //======cookie session middleware=================================//
 
 app.use(
@@ -242,6 +254,34 @@ app.get("/api/searchpeople", (req, res) => {
         });
 });
 
+app.get("/list", (req, res) => {
+    listOfTravelers()
+        .then((results) => {
+            console.log(
+                "my result in index.js in get list of  people: ",
+                results
+            );
+            res.json(results.rows);
+            console.log("my results.rows: ", results.rows);
+        })
+        .catch((err) => {
+            console.log("This is my get list of people err: ", err);
+        });
+});
+
+app.get("/logout", (req, res) => {
+    req.session.userId = null;
+    res.redirect("/");
+});
+
+app.post("/deleteAccount", (req, res) => {
+    console.log("hit delete acc");
+    deleteAccount(req.session.userId).then(() => {
+        req.session.userId = null;
+        res.json({ success: true });
+    });
+});
+
 app.get("*", function (req, res) {
     if (!req.session.userId) {
         res.redirect("/welcome");
@@ -250,6 +290,34 @@ app.get("*", function (req, res) {
     }
 });
 
-app.listen(8080, function () {
+server.listen(8080, function () {
     console.log("I'm listening.");
+});
+
+io.on("connection", function (socket) {
+    console.log(`Socket id ${socket.id} is now connected`);
+
+    if (!socket.request.session.userId) {
+        return socket.disconnect(true);
+    }
+    const userId = socket.request.session.userId;
+
+    getLastTenMessages().then((results) => {
+        console.log("my results in socket.io: ", results.rows);
+        io.sockets.emit("chatMessages", results.rows.reverse());
+        console.log("last 10 messages : ", results.rows);
+    });
+
+    socket.on("My amazing chat message", (newMessage) => {
+        console.log("this is coming from chat.js:", newMessage);
+        console.log("user who sent newMessage is :", userId);
+
+        insertNewMessage(userId, newMessage).then((results) => {
+            console.log("Messages sent to chatBox ", results.rows[0]);
+            getMessageInformation(userId).then((results) => {
+                console.log("SENDER: ", results.rows[0]);
+                io.sockets.emit("chatMessage", results.rows[0]);
+            });
+        });
+    });
 });
