@@ -122,3 +122,46 @@ exports.getMessageInformation = (id) => {
 exports.deleteAccount = (id) => {
     return db.query(`DELETE FROM users, travelers WHERE (id = $1)`, [id]);
 };
+
+exports.editDetails = (
+    id,
+    nationality,
+    dep_date,
+    dep_time,
+    arr_date,
+    arr_time,
+    flight_name,
+    flight_number,
+    seat_number,
+    arr_place
+) => {
+    return db.query(
+        `UPDATE travelers SET
+        nationality=$2,
+        dep_date=$3,
+        dep_time=$4,
+        arr_date=$5,
+        arr_time=$6,
+        flight_name=$7,
+        flight_number=$8,
+        seat_number=$9,
+        arr_place=$10 
+        WHERE travelers.user_id = $1`,
+        [
+            id,
+            nationality,
+            dep_date,
+            dep_time,
+            arr_date,
+            arr_time,
+            flight_name,
+            flight_number,
+            seat_number,
+            arr_place,
+        ]
+    );
+};
+
+exports.gettingDetails = (id) => {
+    return db.query(`SELECT * FROM travelers WHERE user_id=$1`, [id]);
+};

@@ -841,7 +841,7 @@ input {
 
 .app-navbar {
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     gap: 10px;
     margin-top: 10px;
     cursor: pointer;
@@ -884,6 +884,8 @@ h5 {
 
 .search-table {
     margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 table {
@@ -905,7 +907,7 @@ th {
 
 td {
     font-size: 15px;
-    font-weight: lighter;
+    font-weight: bold;
 }
 
 table,

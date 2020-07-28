@@ -15,6 +15,8 @@ const {
     insertNewMessage,
     getMessageInformation,
     deleteAccount,
+    editDetails,
+    gettingDetails,
 } = require("./db.js");
 
 //======socket boilerplate=================================//
@@ -203,8 +205,8 @@ app.post("/details", (req, res) => {
             req.body.arr_place
         )
             .then((results) => {
-                console.log("MY REQ:BODY IN POST REGISTRATION: ", req.body);
-                console.log("MY RESULTS IN POST REGISTRATION: ", results);
+                console.log("MY REQ:BODY IN POST DETAILS: ", req.body);
+                console.log("MY RESULTS IN POST DETAILS: ", results);
                 console.log("req.session: ", req.session);
 
                 if (results.rows[0].user_id) {
@@ -214,7 +216,7 @@ app.post("/details", (req, res) => {
                 }
             })
             .catch((err) => {
-                console.log("MY POST REGISTRATION ERROR : ", err);
+                console.log("MY POST DETAILS ERROR : ", err);
                 res.json();
             });
     } else {
@@ -272,6 +274,58 @@ app.get("/list", (req, res) => {
 app.get("/logout", (req, res) => {
     req.session.userId = null;
     res.redirect("/");
+});
+
+app.get("/editdetails", (req, res) => {
+    if (req.session.userId) {
+        gettingDetails(req.session.userId)
+            .then((results) => {
+                console.log("MY RESULTS IN GET edit details: ", results);
+                res.json(results.rows[0]);
+            })
+            .catch((err) => {
+                console.log("MY GET edit details ERROR : ", err);
+            });
+    } else {
+        res.relocate("/flightdata");
+    }
+});
+
+app.post("/editdetails", (req, res) => {
+    if (req.session.userId) {
+        editDetails(
+            req.session.userId,
+            req.body.nationality,
+            req.body.dep_date,
+            req.body.dep_time,
+            req.body.arr_date,
+            req.body.arr_time,
+            req.body.flight_name,
+            req.body.flight_number,
+            req.body.seat_number,
+            req.body.arr_place
+        )
+            .then((results) => {
+                console.log("MY REQ:BODY IN POST EDIT DETAILS: ", req.body);
+                console.log(
+                    "MY RESULTS IN POST EDIT DETAILS: ",
+                    results.rows[0]
+                );
+                console.log("req.session: ", req.session);
+
+                if (results.rows[0].userId) {
+                    res.json(results.rows[0]);
+                } else {
+                    res.redirect("/editdetails");
+                }
+            })
+            .catch((err) => {
+                console.log("MY POST EDIT DETAILS ERROR : ", err);
+                res.json();
+            });
+    } else {
+        res.json({ error: true });
+    }
 });
 
 app.post("/deleteAccount", (req, res) => {
