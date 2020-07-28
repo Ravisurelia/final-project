@@ -60,7 +60,7 @@ export default class Registration extends React.Component {
                 {this.state.error && (
                     <div className="error">*ALL FIELDS ARE REQUIRED!*</div>
                 )}
-                <p id="insert_details">Please resister here!</p>
+                <p id="insert_details">Please register here</p>
                 <form method="POST" className="registration_form">
                     <input
                         type="text"

@@ -3,7 +3,7 @@
     padding: 0px;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Ubuntu", sans-serif;
 }
 
 html {
@@ -706,6 +706,13 @@ html {
     }
 }
 
+span {
+    font-size: 50px;
+    color: orangered;
+    padding: 0;
+    font-weight: bold;
+}
+
 .welcome_main {
     display: flex;
     flex-direction: column;
@@ -718,7 +725,8 @@ html {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-bottom: chocolate 1px solid;
+    border-bottom: chocolate 2px solid;
+
     width: 100vw;
     padding: 10px;
 }
@@ -728,17 +736,25 @@ html {
     height: 100px;
 }
 
+.main-logo1 {
+    width: 90px;
+    height: 90px;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
 .yatra-font {
     font-weight: lighter;
     letter-spacing: 1px;
     margin-left: 10px;
     color: whitesmoke;
+    font-size: 45px;
 }
 
 .slogan {
     font-weight: lighter;
     letter-spacing: 1px;
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 40px;
     color: whitesmoke;
     color: whitesmoke;
@@ -753,7 +769,7 @@ html {
 
 .welcome_info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -765,7 +781,7 @@ html {
     align-items: center;
     text-decoration: none;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 25px;
     background-color: rgb(250, 109, 15);
     border-radius: 20px;
     padding: 20px;
@@ -788,10 +804,10 @@ footer {
 }
 
 #insert_details {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: lighter;
     letter-spacing: 2px;
-    margin-top: 20px;
+    margin-top: 40px;
     color: whitesmoke;
 }
 #input-data {

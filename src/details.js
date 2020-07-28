@@ -51,13 +51,8 @@ export default class Details extends React.Component {
                     "This is my results in post axios details: ",
                     results
                 );
-                if (results.data.error) {
-                    this.setState({
-                        error: true,
-                    });
-                } else {
-                    location.replace("/flightdetails");
-                }
+
+                location.replace("/flightdetails");
             })
             .catch((err) => {
                 console.log("my err in axios details: ", err);

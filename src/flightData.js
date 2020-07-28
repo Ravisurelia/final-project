@@ -83,13 +83,13 @@ export default function Data() {
                 </div>
             ))}
             <button className="sendbtn1" onClick={modalOpen}>
-                Delete Profile
+                Delete data
             </button>
             {deleteModal && (
                 <div className="deletemodal">
                     <p className="delete-para">
-                        Are you sure you want to delete your profile
-                        Permanently? This will delete all your data.
+                        Are you sure you want to delete your data Permanently?
+                        This will delete all your flight data!
                     </p>
                     <div className="del-modalbtn">
                         <button className="sendbtn2" onClick={deleteAccount}>

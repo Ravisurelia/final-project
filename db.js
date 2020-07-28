@@ -120,7 +120,7 @@ exports.getMessageInformation = (id) => {
 };
 
 exports.deleteAccount = (id) => {
-    return db.query(`DELETE FROM users, travelers WHERE (id = $1)`, [id]);
+    return db.query(`DELETE FROM travelers WHERE (user_id = $1)`, [id]);
 };
 
 exports.editDetails = (
