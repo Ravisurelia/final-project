@@ -32,7 +32,14 @@ export default class Registration extends React.Component {
             })
             .then((results) => {
                 console.log("This is my results in post axios: ", results);
-                location.replace("/details");
+
+                if (results.data.error) {
+                    this.setState({
+                        error: true,
+                    });
+                } else {
+                    location.replace("/details");
+                }
             })
             .catch((err) => {
                 console.log("my err in axios: ", err);

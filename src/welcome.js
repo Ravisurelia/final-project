@@ -11,7 +11,11 @@ export default function Welcome() {
                 <h1 className="yatra-font">YOGI DIVINE SOCIETY - Yatra</h1>
             </div>
             <div className="welcome_info">
-                <h2 className="slogan">Love, Care & Travel</h2>
+                <h2 className="slogan">
+                    Travel with harmony is the key to happiness!
+                </h2>
+                {/*                 <h2 className="slogan">Love, Care & Travel</h2>
+                 */}{" "}
             </div>
 
             {/* <section><Registration /></section> */}

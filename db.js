@@ -165,3 +165,10 @@ exports.editDetails = (
 exports.gettingDetails = (id) => {
     return db.query(`SELECT * FROM travelers WHERE user_id=$1`, [id]);
 };
+
+exports.signedUser = (id) => {
+    //selecting userid
+    return db.query(`SELECT nationality FROM travelers WHERE user_id = $1`, [
+        id,
+    ]);
+};

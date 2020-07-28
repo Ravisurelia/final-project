@@ -51,7 +51,13 @@ export default class Details extends React.Component {
                     "This is my results in post axios details: ",
                     results
                 );
-                location.replace("/flightdetails");
+                if (results.data.error) {
+                    this.setState({
+                        error: true,
+                    });
+                } else {
+                    location.replace("/flightdetails");
+                }
             })
             .catch((err) => {
                 console.log("my err in axios details: ", err);
@@ -66,7 +72,9 @@ export default class Details extends React.Component {
         return (
             <div className="details-info">
                 {this.state.error && (
-                    <div className="error">ALL FIELDS ARE REQUIRED!!</div>
+                    <div className="error">
+                        Please fill all areas before you submit it!
+                    </div>
                 )}
                 <p id="insert_details">Please insert your details below:</p>
                 <form method="POST" className="details_form">

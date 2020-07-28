@@ -724,8 +724,8 @@ html {
 }
 
 .main-logo {
-    width: 70px;
-    height: 80px;
+    width: 90px;
+    height: 100px;
 }
 
 .yatra-font {
@@ -741,6 +741,21 @@ html {
     margin-top: 20px;
     font-size: 40px;
     color: whitesmoke;
+    color: whitesmoke;
+}
+
+.error {
+    color: rgb(202, 90, 70);
+    margin-top: 10px;
+    letter-spacing: 2px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.welcome_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .registration_form {

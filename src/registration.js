@@ -38,7 +38,13 @@ export default class Registration extends React.Component {
                     "This is my results in post axios registration: ",
                     results
                 );
-                location.replace("/details");
+                if (results.data.error) {
+                    this.setState({
+                        error: true,
+                    });
+                } else {
+                    location.replace("/details");
+                }
             })
             .catch((err) => {
                 console.log("my err in axios registration: ", err);
@@ -52,9 +58,9 @@ export default class Registration extends React.Component {
         return (
             <div className="registration-info">
                 {this.state.error && (
-                    <div className="error">ALL FIELDS ARE REQUIRED!!</div>
+                    <div className="error">*ALL FIELDS ARE REQUIRED!*</div>
                 )}
-                <p id="insert_details">Register here</p>
+                <p id="insert_details">Please resister here!</p>
                 <form method="POST" className="registration_form">
                     <input
                         type="text"
