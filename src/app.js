@@ -60,7 +60,7 @@ export default class App extends React.Component {
                         <Link to="/chat" className="link">
                             Yatra-chat
                         </Link>
-                        <a href="/logout" className="link">
+                        <a href="/logout" className="link1">
                             Logout
                         </a>
                     </div>

@@ -891,6 +891,22 @@ input {
 .link {
     text-decoration: none;
     color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.link:hover {
+    transform: scale(1.2);
+    color: rgb(82, 168, 248);
+}
+.link1 {
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.link1:hover {
+    transform: scale(1.2);
+    color: red;
 }
 
 .app_logo {
