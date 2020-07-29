@@ -8,6 +8,7 @@ import SearchPeople from "./searchpeople";
 import List from "./list";
 import Chat from "./chat";
 import EditDetails from "./editdetails";
+import PlaceToVisit from "./tour";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -53,6 +54,9 @@ export default class App extends React.Component {
                         <Link to="/listoftravelers" className="link">
                             List
                         </Link>
+                        <Link to="/tour" className="link">
+                            Place to visit
+                        </Link>
                         <Link to="/chat" className="link">
                             Yatra-chat
                         </Link>
@@ -84,6 +88,7 @@ export default class App extends React.Component {
                     <Route exact path="/users" component={SearchPeople} />
                     <Route exact path="/listoftravelers" component={List} />
                     <Route path="/chat" component={Chat} />
+                    <Route path="/tour" component={PlaceToVisit} />
 
                     <Route
                         exact

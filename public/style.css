@@ -1155,3 +1155,41 @@ td {
     justify-content: center;
     align-items: center;
 }
+
+.tour {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    overflow-x: hidden;
+
+    margin-top: 50px;
+}
+
+.tour-img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border: 3px solid orangered;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-filter: blur(5px);
+    filter: blur(3px);
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+
+.tour-img:hover {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+}
+
+.place-name {
+    color: white;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
