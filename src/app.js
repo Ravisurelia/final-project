@@ -38,26 +38,26 @@ export default class App extends React.Component {
                         <Link to="/flightdetails" className="logo_name">
                             <img src="/yds-logo.png" className="app_logo" />
                         </Link>
-                        <Link to="/details" className="link">
+                        <Link to="/details" className="link2">
                             Form
                         </Link>
-                        <Link to="/flightdetails" className="link">
+                        <Link to="/flightdetails" className="link2">
                             Your Data
                         </Link>
-                        <Link to="/edit" className="link">
+                        <Link to="/edit" className="link2">
                             Edit Data
                         </Link>
 
-                        <Link to="/users" className="link">
+                        <Link to="/users" className="link2">
                             Search People
                         </Link>
-                        <Link to="/listoftravelers" className="link">
+                        <Link to="/listoftravelers" className="link2">
                             List
                         </Link>
-                        <Link to="/tour" className="link">
+                        <Link to="/tour" className="link2">
                             Place to visit
                         </Link>
-                        <Link to="/chat" className="link">
+                        <Link to="/chat" className="link2">
                             Yatra-chat
                         </Link>
                         <a href="/logout" className="link1">

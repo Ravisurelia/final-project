@@ -891,10 +891,14 @@ input {
 .link {
     text-decoration: none;
     color: white;
+}
+.link2 {
+    text-decoration: none;
+    color: white;
     transition: all 0.2s ease-in-out;
 }
 
-.link:hover {
+.link2:hover {
     transform: scale(1.2);
     color: rgb(82, 168, 248);
 }
